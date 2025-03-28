@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="Bluek.PNG" type="image/png">
+  <title>CodeStorm Registration - Zenith Club</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='contour-pattern' width='200' height='200' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0,50 Q50,0 100,50 Q150,100 200,50 M0,150 Q50,100 100,150 Q150,200 200,150' stroke='%232b4bff' fill='none' stroke-width='0.5' opacity='0.3'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23000000'/%3E%3Crect width='100%25' height='100%25' fill='url(%23contour-pattern)'/%3E%3C/svg%3E");
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    
+   .logo {
+      height: 100px;
+      width: auto;
+    }
+    
+    .logo img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #0ff;
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .page-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #4d6bff, #0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .registration-form {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(77, 107, 255, 0.3);
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+    }
+    
+    .registration-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #4d6bff, #0ff);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-col {
+      flex: 1;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #0ff;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(77, 107, 255, 0.5);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: #0ff;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%230ff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 1rem) center;
+      padding-right: 2.5rem;
+    }
+    
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .radio-option input {
+      width: auto;
+      cursor: pointer;
+    }
+    
+    .submit-btn {
+      padding: 1rem 2.5rem;
+      background-color: transparent;
+      color: #4d6bff;
+      border: 2px solid #4d6bff;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      display: block;
+      margin: 2rem auto 0;
+      min-width: 200px;
+    }
+    
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(77, 107, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+    
+    .submit-btn:hover {
+      box-shadow: 0 0 20px rgba(77, 107, 255, 0.7);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+      color: #4d6bff;
+      margin-top: auto;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: #0ff;
+    }
+    
+    .flicker {
+      animation: flicker 5s infinite alternate;
+    }
+    
+    @keyframes flicker {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.5;
+      }
+    }
+    
+    #lightningCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    
+    .numbers {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #4d6bff;
+      opacity: 0.5;
+    }
+    
+    .success-message {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .success-message h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #4d6bff, #0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .success-message p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    
+    .success-btn {
+      padding: 1rem 2.5rem;
+      background-color: transparent;
+      color: #4d6bff;
+      border: 2px solid #4d6bff;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+    
+    .success-btn:hover {
+      box-shadow: 0 0 20px rgba(77, 107, 255, 0.7);
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      nav ul {
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="lightningCanvas"></canvas>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <!-- Replace with your actual logo path -->
+        <img src="White (1).PNG" alt="Zenith Club Logo" id="zenith-logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <div class="page-title">
+      <h1 class="flicker">Join CodeStorm</h1>
+      <p class="subtitle">Register now to secure your spot in this electrifying coding challenge that will push your limits and unlock your potential.</p>
+    </div>
+    
+    <form id="registrationForm" class="registration-form">
+      <div class="numbers">67 79 68 69</div>
+      
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+        </div>
+        <div class="form-col">
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="speciality">Speciality</label>
+        <select id="speciality" name="speciality" required>
+          <option value="" disabled selected>Select your speciality</option>
+          <option value="preparatory">Preparatory Classes</option>
+          <option value="mechanical">Mechanical Engineering</option>
+          <option value="automation">Automation Engineering</option>
+          <option value="process">Process Engineering</option>
+          <option value="mining">Mining Engineering</option>
+          <option value="materials">Materials Engineering</option>
+          <option value="industrial">Industrial Engineering</option>
+          <option value="electrical">Electrical Engineering</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Programming Language</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="language" value="python" required>
+            Python
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="language" value="cpp">
+            C++
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="language" value="c">
+            C
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="language" value="javascript">
+            JavaScript
+          </label>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <button type="submit" class="submit-btn">Submit Registration</button>
+    </form>
+    
+    <footer>
+      <p>&copy; 2025 Zenith Club. All Rights Reserved.</p>
+    
+    </footer>
+  </div>
+  
+  <div id="successMessage" class="success-message">
+    <h2>Registration Successful!</h2>
+    <p>Thank you for registering for CodeStorm. We're excited to have you join us for this electrifying event. Stay tuned for more details.</p>
+    <button class="success-btn" onclick="hideSuccessMessage()">Return to Homepage</button>
+  </div>
+  
+  <script>
+    // Lightning effect (keep this part as it is)
+    function setupLightning() {
+      const canvas = document.getElementById('lightningCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas dimensions
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Lightning parameters
+      const lightningInterval = 5000; // Time between lightning strikes in ms
+      const branchProbability = 0.3; // Probability of a branch forming
+      
+      function drawLightning(x, y, angle, length, width, branches, color) {
+        if (branches <= 0) return;
+        
+        const endX = x + Math.cos(angle) * length;
+        const endY = y + Math.sin(angle) * length;
+        
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(endX, endY);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.stroke();
+        
+        // Create branches
+        for (let i = 0; i < 3; i++) {
+          if (Math.random() < branchProbability) {
+            const newAngle = angle + (Math.random() - 0.5) * 1.5;
+            const newLength = length * 0.7;
+            const newWidth = width * 0.7;
+            const branchX = x + (endX - x) * (0.3 + Math.random() * 0.4);
+            const branchY = y + (endY - y) * (0.3 + Math.random() * 0.4);
+            
+            drawLightning(
+              branchX,
+              branchY,
+              newAngle,
+              newLength,
+              newWidth,
+              branches - 1,
+              color
+            );
+          }
+        }
+        
+        // Continue main branch
+        if (branches > 1) {
+          const newAngle = angle + (Math.random() - 0.5) * 0.3;
+          drawLightning(
+            endX,
+            endY,
+            newAngle,
+            length * 0.8,
+            width * 0.8,
+            branches - 1,
+            color
+          );
+        }
+      }
+      
+      function createLightning() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const startX = Math.random() * canvas.width;
+        const startY = 0;
+        const angle = Math.PI / 2; // Downward
+        const length = 100;
+        const width = 3;
+        const branches = 10;
+        const color = '#4d6bff';
+        
+        drawLightning(startX, startY, angle, length, width, branches, color);
+        
+        // Fade out lightning
+        setTimeout(() => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }, 200);
+      }
+      
+      // Create lightning at random intervals
+      function scheduleLightning() {
+        const delay = lightningInterval + Math.random() * 5000;
+        setTimeout(() => {
+          createLightning();
+          scheduleLightning();
+        }, delay);
+      }
+      
+      scheduleLightning();
+    }
+    
+    // Initialize lightning after page load
+    window.addEventListener('load', setupLightning);
+  
+    // Form submission
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      // Get form data
+      const formData = new FormData(e.target);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+  
+      // Send data to SheetDB
+      fetch('https://sheetdb.io/api/v1/nxix83fw0hahr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          showSuccessMessage();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Registration failed. Please try again.');
+        });
+    });
+  
+    function showSuccessMessage() {
+      document.getElementById('successMessage').style.display = 'flex';
+    }
+  
+    function hideSuccessMessage() {
+      document.getElementById('successMessage').style.display = 'none';
+      // Optionally redirect to homepage
+      // window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
